@@ -231,11 +231,13 @@
     function getDemoResponse(prompt) {
         const lower = prompt.toLowerCase();
 
+        const demoBanner = `> ⚠️ **DEMO MODE** — This is a sample response to show you the tool's capabilities. To get **real AI analysis** tailored to YOUR specific input, click the **⚙️ API Key** button above and add a free Gemini API key from [Google AI Studio](https://aistudio.google.com/app/apikey).\n\n---\n\n`;
+
         if (lower.includes('perspective translator') || lower.includes('translate this perspective')) {
             return new Promise((r) =>
                 setTimeout(
                     () =>
-                        r(`## 🔄 Translated Perspective
+                        r(demoBanner + `## 🔄 Translated Perspective
 
 ### Original Core Message
 The original argument centers on protecting young people and advocating for governmental intervention in digital spaces.
@@ -262,7 +264,7 @@ The original argument centers on protecting young people and advocating for gove
             return new Promise((r) =>
                 setTimeout(
                     () =>
-                        r(`## 🔍 Bias & Manipulation Analysis
+                        r(demoBanner + `## 🔍 Bias & Manipulation Analysis
 
 ### Overall Manipulation Score: 7.2/10 ⚠️
 
@@ -303,7 +305,7 @@ The original argument centers on protecting young people and advocating for gove
             return new Promise((r) =>
                 setTimeout(
                     () =>
-                        r(`## 🤝 Common Ground Analysis
+                        r(demoBanner + `## 🤝 Common Ground Analysis
 
 ### Shared Core Values Discovered: 4
 
@@ -342,7 +344,7 @@ The fundamental tension is **equity vs. efficiency** — and both are legitimate
             return new Promise((r) =>
                 setTimeout(
                     () =>
-                        r(`## 💡 Empathy Profile
+                        r(demoBanner + `## 💡 Empathy Profile
 
 ### Understanding the Perspective You Find Difficult
 
@@ -389,7 +391,7 @@ This validates the emotion without conceding the policy — and opens real dialo
             return new Promise((r) =>
                 setTimeout(
                     () =>
-                        r(`## 🕊️ De-escalated Message
+                        r(demoBanner + `## 🕊️ De-escalated Message
 
 ### Emotional Temperature
 🔴 Original: **9/10** (Hostile)
@@ -433,7 +435,7 @@ Every insult in the original message makes the reader **less likely** to conside
             setTimeout(
                 () =>
                     r(
-                        `## Analysis Complete\n\nThis is a demo response. Connect your Gemini API key to get real AI-powered analysis tailored to your specific input.\n\nThe full version will provide deep, nuanced insights powered by advanced language models.`
+                        demoBanner + `## Analysis Complete\n\nConnect your **free Gemini API key** to get real AI-powered analysis tailored to your specific input.\n\nClick the **⚙️ API Key** button in the top right to activate MindBridge AI's full power.`
                     ),
                 800
             )
