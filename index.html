@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindBridge AI — Bridge the Empathy Gap</title>
+    <meta name="description" content="MindBridge AI is the world's first empathy engine. Translate perspectives, detect bias, find common ground, and transform conflict into understanding.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌉</text></svg>">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="orb orb-4"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <!-- API Key Modal -->
+    <div id="apiKeyModal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-icon">🔑</div>
+            <h2>Connect Your AI Engine</h2>
+            <p>MindBridge uses Google's Gemini AI to power its empathy engine. Enter your free API key to get started.</p>
+            <div class="input-group">
+                <input type="password" id="apiKeyInput" placeholder="Paste your Gemini API key" autocomplete="off">
+                <button id="saveApiKey" class="btn btn-primary">
+                    <span>Activate MindBridge</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+            <a href="https://aistudio.google.com/app/apikey" target="_blank" class="api-link">Get a free API key from Google AI Studio →</a>
+            <button id="skipApiKey" class="btn btn-ghost">Try with demo mode</button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="header-inner">
+            <a href="#" class="logo" id="logoLink">
+                <div class="logo-icon">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <path d="M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2z" stroke="url(#logo-grad)" stroke-width="2"/>
+                        <path d="M10 16c0-3.314 2.686-6 6-6M16 22c3.314 0 6-2.686 6-6" stroke="url(#logo-grad)" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="10" cy="16" r="2" fill="url(#logo-grad)"/>
+                        <circle cx="22" cy="16" r="2" fill="url(#logo-grad2)"/>
+                        <path d="M12 12l8 8M20 12l-8 8" stroke="url(#logo-grad)" stroke-width="1.5" opacity="0.3"/>
+                        <defs>
+                            <linearGradient id="logo-grad" x1="0" y1="0" x2="32" y2="32">
+                                <stop stop-color="#818cf8"/>
+                                <stop offset="1" stop-color="#c084fc"/>
+                            </linearGradient>
+                            <linearGradient id="logo-grad2" x1="0" y1="0" x2="32" y2="32">
+                                <stop stop-color="#c084fc"/>
+                                <stop offset="1" stop-color="#f472b6"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <span class="logo-text">MindBridge<span class="logo-ai">AI</span></span>
+            </a>
+            <nav class="nav-links" id="navLinks">
+                <a href="#" class="nav-link active" data-section="home">Home</a>
+                <a href="#" class="nav-link" data-section="perspective">Perspective</a>
+                <a href="#" class="nav-link" data-section="bias">Bias Detector</a>
+                <a href="#" class="nav-link" data-section="common-ground">Common Ground</a>
+                <a href="#" class="nav-link" data-section="empathy">Empathy Sim</a>
+                <a href="#" class="nav-link" data-section="deescalate">De-escalate</a>
+            </nav>
+            <div class="header-actions">
+                <div class="mode-badge" id="modeBadge">
+                    <span class="mode-dot"></span>
+                    <span class="mode-text">Demo Mode</span>
+                </div>
+                <button class="btn btn-sm btn-outline" id="changeApiKey">⚙️ API Key</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="mainContent">
+        <!-- HOME / HERO SECTION -->
+        <section id="section-home" class="section active">
+            <div class="hero">
+                <div class="hero-badge">
+                    <span class="pulse-dot"></span>
+                    World's First Empathy Engine
+                </div>
+                <h1 class="hero-title">
+                    Bridge the Gap<br>
+                    Between <span class="gradient-text">Minds</span>
+                </h1>
+                <p class="hero-subtitle">
+                    MindBridge AI translates perspectives, detects manipulation, finds common ground,
+                    and transforms conflict into understanding — powered by advanced AI.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary btn-lg" data-navigate="perspective">
+                        <span>Start Bridging</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                    <button class="btn btn-glass btn-lg" data-navigate="bias">
+                        <span>Detect Bias</span>
+                    </button>
+                </div>
+
+                <!-- Tool Cards -->
+                <div class="tool-grid">
+                    <div class="tool-card" data-navigate="perspective">
+                        <div class="tool-card-icon">🔄</div>
+                        <h3>Perspective Translator</h3>
+                        <p>Rewrite any argument to resonate with the opposite viewpoint</p>
+                        <div class="tool-card-arrow">→</div>
+                    </div>
+                    <div class="tool-card" data-navigate="bias">
+                        <div class="tool-card-icon">🔍</div>
+                        <h3>Bias Detector</h3>
+                        <p>Identify cognitive biases, fallacies & emotional manipulation</p>
+                        <div class="tool-card-arrow">→</div>
+                    </div>
+                    <div class="tool-card" data-navigate="common-ground">
+                        <div class="tool-card-icon">🤝</div>
+                        <h3>Common Ground Finder</h3>
+                        <p>Discover shared values between opposing positions</p>
+                        <div class="tool-card-arrow">→</div>
+                    </div>
+                    <div class="tool-card" data-navigate="empathy">
+                        <div class="tool-card-icon">💡</div>
+                        <h3>Empathy Simulator</h3>
+                        <p>Understand why someone thinks differently through their lens</p>
+                        <div class="tool-card-arrow">→</div>
+                    </div>
+                    <div class="tool-card" data-navigate="deescalate">
+                        <div class="tool-card-icon">🕊️</div>
+                        <h3>De-escalation Engine</h3>
+                        <p>Transform heated confrontation into constructive dialogue</p>
+                        <div class="tool-card-arrow">→</div>
+                    </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="stats-bar">
+                    <div class="stat">
+                        <div class="stat-value" data-count="5">5</div>
+                        <div class="stat-label">AI Tools</div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <div class="stat-value">∞</div>
+                        <div class="stat-label">Perspectives</div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <div class="stat-value">0</div>
+                        <div class="stat-label">Judgment</div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <div class="stat-value">100%</div>
+                        <div class="stat-label">Empathy</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PERSPECTIVE TRANSLATOR -->
+        <section id="section-perspective" class="section">
+            <div class="tool-page">
+                <div class="tool-header">
+                    <div class="tool-icon-lg">🔄</div>
+                    <h2>Perspective Translator</h2>
+                    <p>Paste any argument, opinion, or viewpoint — and see it rewritten to resonate with someone who holds the opposite belief.</p>
+                </div>
+                <div class="tool-workspace">
+                    <div class="input-panel">
+                        <div class="panel-header">
+                            <span class="panel-label">Original Perspective</span>
+                            <div class="panel-actions">
+                                <select id="perspectiveTarget" class="select-input">
+                                    <option value="opposite">Opposite Viewpoint</option>
+                                    <option value="conservative">Conservative Lens</option>
+                                    <option value="progressive">Progressive Lens</option>
+                                    <option value="scientific">Scientific Lens</option>
+                                    <option value="emotional">Emotional Lens</option>
+                                    <option value="pragmatic">Pragmatic Lens</option>
+                                    <option value="spiritual">Spiritual Lens</option>
+                                </select>
+                            </div>
+                        </div>
+                        <textarea id="perspectiveInput" class="tool-textarea" placeholder="Paste an argument or viewpoint here...&#10;&#10;Example: 'Social media is destroying our youth and should be heavily regulated by the government. Kids under 16 should be banned from all platforms.'" rows="8"></textarea>
+                        <button id="perspectiveSubmit" class="btn btn-primary btn-block">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+                            <span>Translate Perspective</span>
+                        </button>
+                    </div>
+                    <div class="output-panel">
+                        <div class="panel-header">
+                            <span class="panel-label">Translated Perspective</span>
+                            <button class="btn btn-sm btn-ghost copy-btn" data-target="perspectiveOutput">📋 Copy</button>
+                        </div>
+                        <div id="perspectiveOutput" class="tool-output">
+                            <div class="output-placeholder">
+                                <div class="placeholder-icon">🌉</div>
+                                <p>Your translated perspective will appear here</p>
+                                <span>The same core argument, reframed to connect with a different worldview</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BIAS DETECTOR -->
+        <section id="section-bias" class="section">
+            <div class="tool-page">
+                <div class="tool-header">
+                    <div class="tool-icon-lg">🔍</div>
+                    <h2>Bias & Manipulation Detector</h2>
+                    <p>Paste any text — news article, social media post, speech, or message — and uncover hidden biases, logical fallacies, and manipulation techniques.</p>
+                </div>
+                <div class="tool-workspace">
+                    <div class="input-panel">
+                        <div class="panel-header">
+                            <span class="panel-label">Text to Analyze</span>
+                        </div>
+                        <textarea id="biasInput" class="tool-textarea" placeholder="Paste any text to analyze for bias and manipulation...&#10;&#10;Example: 'Everyone knows that this new policy will destroy jobs. The so-called experts who support it are clearly out of touch with real Americans.'" rows="8"></textarea>
+                        <button id="biasSubmit" class="btn btn-primary btn-block">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                            <span>Analyze for Bias</span>
+                        </button>
+                    </div>
+                    <div class="output-panel">
+                        <div class="panel-header">
+                            <span class="panel-label">Analysis Results</span>
+                            <button class="btn btn-sm btn-ghost copy-btn" data-target="biasOutput">📋 Copy</button>
+                        </div>
+                        <div id="biasOutput" class="tool-output">
+                            <div class="output-placeholder">
+                                <div class="placeholder-icon">🛡️</div>
+                                <p>Bias analysis will appear here</p>
+                                <span>Identifying cognitive biases, logical fallacies, and emotional manipulation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMMON GROUND FINDER -->
+        <section id="section-common-ground" class="section">
+            <div class="tool-page">
+                <div class="tool-header">
+                    <div class="tool-icon-lg">🤝</div>
+                    <h2>Common Ground Finder</h2>
+                    <p>Enter two opposing viewpoints and discover the shared values, concerns, and goals that both sides actually agree on.</p>
+                </div>
+                <div class="tool-workspace dual-input">
+                    <div class="input-panel">
+                        <div class="panel-header">
+                            <span class="panel-label">🔵 Viewpoint A</span>
+                        </div>
+                        <textarea id="groundInputA" class="tool-textarea" placeholder="Enter the first viewpoint...&#10;&#10;Example: 'We need universal healthcare. Nobody should go bankrupt from medical bills.'" rows="5"></textarea>
+                        <div class="vs-divider">
+                            <span>VS</span>
+                        </div>
+                        <div class="panel-header">
+                            <span class="panel-label">🔴 Viewpoint B</span>
+                        </div>
+                        <textarea id="groundInputB" class="tool-textarea" placeholder="Enter the opposing viewpoint...&#10;&#10;Example: 'Government-run healthcare will be inefficient and lower quality. The free market is the best way to drive innovation.'" rows="5"></textarea>
+                        <button id="groundSubmit" class="btn btn-primary btn-block">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            <span>Find Common Ground</span>
+                        </button>
+                    </div>
+                    <div class="output-panel">
+                        <div class="panel-header">
+                            <span class="panel-label">Shared Values & Bridge Points</span>
+                            <button class="btn btn-sm btn-ghost copy-btn" data-target="groundOutput">📋 Copy</button>
+                        </div>
+                        <div id="groundOutput" class="tool-output">
+                            <div class="output-placeholder">
+                                <div class="placeholder-icon">🤝</div>
+                                <p>Common ground analysis will appear here</p>
+                                <span>Discovering shared values hidden beneath opposing positions</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EMPATHY SIMULATOR -->
+        <section id="section-empathy" class="section">
+            <div class="tool-page">
+                <div class="tool-header">
+                    <div class="tool-icon-lg">💡</div>
+                    <h2>Empathy Simulator</h2>
+                    <p>Enter a viewpoint you disagree with, and explore the lived experiences, values, and reasoning that lead someone to genuinely hold that belief.</p>
+                </div>
+                <div class="tool-workspace">
+                    <div class="input-panel">
+                        <div class="panel-header">
+                            <span class="panel-label">A View You Want to Understand</span>
+                        </div>
+                        <textarea id="empathyInput" class="tool-textarea" placeholder="Enter a viewpoint you find hard to understand...&#10;&#10;Example: 'I don't understand why some people are against immigration when immigrants clearly contribute to the economy.'" rows="8"></textarea>
+                        <button id="empathySubmit" class="btn btn-primary btn-block">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                            <span>Generate Empathy Profile</span>
+                        </button>
+                    </div>
+                    <div class="output-panel">
+                        <div class="panel-header">
+                            <span class="panel-label">Empathy Profile</span>
+                            <button class="btn btn-sm btn-ghost copy-btn" data-target="empathyOutput">📋 Copy</button>
+                        </div>
+                        <div id="empathyOutput" class="tool-output">
+                            <div class="output-placeholder">
+                                <div class="placeholder-icon">💡</div>
+                                <p>Empathy simulation will appear here</p>
+                                <span>Walk in someone else's shoes — understand the human behind the opinion</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DE-ESCALATION ENGINE -->
+        <section id="section-deescalate" class="section">
+            <div class="tool-page">
+                <div class="tool-header">
+                    <div class="tool-icon-lg">🕊️</div>
+                    <h2>De-escalation Engine</h2>
+                    <p>Paste a heated, aggressive, or confrontational message and get a constructive, empathetic rewrite that preserves the core message.</p>
+                </div>
+                <div class="tool-workspace">
+                    <div class="input-panel">
+                        <div class="panel-header">
+                            <span class="panel-label">Heated Message</span>
+                        </div>
+                        <textarea id="deescalateInput" class="tool-textarea" placeholder="Paste a heated or confrontational message...&#10;&#10;Example: 'You're an idiot if you think that policy works. People like you are the reason this country is falling apart. Wake up!'" rows="8"></textarea>
+                        <button id="deescalateSubmit" class="btn btn-primary btn-block">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                            <span>De-escalate Message</span>
+                        </button>
+                    </div>
+                    <div class="output-panel">
+                        <div class="panel-header">
+                            <span class="panel-label">Constructive Rewrite</span>
+                            <button class="btn btn-sm btn-ghost copy-btn" data-target="deescalateOutput">📋 Copy</button>
+                        </div>
+                        <div id="deescalateOutput" class="tool-output">
+                            <div class="output-placeholder">
+                                <div class="placeholder-icon">🕊️</div>
+                                <p>De-escalated message will appear here</p>
+                                <span>Same core message, delivered with empathy and respect</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="logo-text">MindBridge<span class="logo-ai">AI</span></span>
+                <p>The world's first empathy engine. Building bridges between minds.</p>
+            </div>
+            <div class="footer-meta">
+                <span>Powered by Gemini AI</span>
+                <span class="footer-dot">·</span>
+                <span>Built for a more empathetic world</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
